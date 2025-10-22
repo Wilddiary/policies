@@ -1,0 +1,83 @@
+# AI Assistant Enforcement Policy for Application Design and Implementation
+
+## Security Principles
+- Security must be designed and implemented first in every project.
+- Security-first review required before approval of any component.
+- No insecure or temporary implementations allowed.
+
+## Identity, Authentication & Authorization
+### General
+- Implement RBAC and ABAC from day one.
+- Use external Identity Provider (IdP), preferably Keycloak.
+### Keycloak Enforcement Rules
+- Apply all standard Keycloak security best practices.
+- Implement custom login theme consistent with application UI.
+- Use organization feature and group-based role assignment only.
+- Use dedicated PostgreSQL database for Keycloak.
+- Manage AuthN/AuthZ/SSO via application UI but offload to Keycloak.
+- Enable SSO, OpenID Connect, and OAuth2 flows.
+
+## Application Design & Development Order
+- Follow API-first design and implementation.
+- Implementation order: 1. Security Framework 2. Backend APIs 3. UI Layer.
+- UI must use only live backend data (no mocks).
+- Include AI-driven augmentation; keep AI modules isolated.
+
+## Deployment & Environment Readiness
+- Support local deployment via Docker Compose (with dependencies).
+- Support Kubernetes and cloud deployments with one-click automation.
+- No manual deployment steps allowed.
+- All implementations must be production-grade; no shortcuts or hacks.
+
+## User Interface & Experience
+- Use industry-standard color schemes, UX patterns, and components.
+- Prioritize user experience, clarity, and consistency.
+- Ensure responsive design for all screen sizes.
+- Avoid excessive data presentation on UI.
+
+## Backend API Standards
+- Prefer Spring Boot (Reactive) for backend implementation.
+- All APIs must be secure and authorized from day one.
+- Swagger/OpenAPI documentation mandatory with security integration.
+- Follow configuration-first design approach.
+- Implement caching cautiously with consistency and security.
+
+## Auditing & Change Tracking
+- Implement auditing from day one.
+- Audit every state-changing event.
+- Ensure reliable, tamper-proof, and comprehensive audit trail.
+
+## Database Standards
+- Use PostgreSQL as the first choice RDBMS.
+- Use a dedicated database per application.
+- Enforce SSL/TLS and least privilege for DB connections.
+
+## Documentation Requirements
+- Maintain User Guides, API Docs, Architecture, Security, and Deployment docs.
+- All documents must be versioned and reviewed before production.
+
+## Code Quality & Testing
+- Code must be simple, readable, and maintainable.
+- Follow industry coding standards and add comments.
+- Minimum 75% test coverage (unit, integration, behavioral).
+- Include ArchUnit and chaos tests.
+- No known vulnerabilities allowed; document unavoidable ones.
+- Integrate SonarQube and dependency checks.
+
+## Multi-Tenancy & Monetization
+- Multi-tenancy must be designed from the start with strict data isolation.
+- Define roles and permissions early in the design phase.
+- Include monetization planning as part of design; enforce standard mechanisms.
+
+## Observability & Monitoring
+- Include structured logging, metrics, and distributed tracing.
+- Use proper log levels and provide contextual details for troubleshooting.
+- Integrate observability tools (Prometheus, Grafana, ELK) in deployment artefacts.
+
+## AI Assistant Enforcement Directives
+- Reject insecure or incomplete implementations.
+- Enforce RBAC/ABAC, Keycloak, and multi-tenancy principles.
+- Ensure APIs are secure, documented, and observable.
+- Flag missing documentation, tests, or vulnerabilities as non-compliant.
+- Promote modular and compliant architecture in all recommendations.
+
